@@ -1,5 +1,7 @@
 # Library_project
 
+/*Library project*/
+
 #include<stdio.h>
 #include<string.h>
 
@@ -14,7 +16,7 @@ struct book
 
 int main()
 {
-	int i,n,choice,num=1;
+	int i,n,range,choice,num=1;
     struct book b[20];
     
     while(num!=0)
@@ -32,6 +34,7 @@ int main()
     scanf("%d",&n);
     read(b,n);        //reading function 
 	}
+
     else if(choice==2)
         print(b,n);       //printing funtoin 
 
@@ -48,14 +51,14 @@ int main()
         copies(b,n);  //available no.of copies for a book
         
     else if(choice==7)
-    	delete_book(b,n);        //deleting a book
+    	n=delete_book(b,n);        //deleting a book
 
 	
     else if(choice==8)
     	update_book(b,n);   //update a book
     	
     else if(choice==9)
-		insert_by_pos(b,n);    //insert a book at specified postion
+		n=insert_by_pos(b,n);    //insert a book at specified postion
 	
     else if(choice==10)
     {
@@ -79,7 +82,7 @@ int main()
 }
 }
 
-read(struct book b[ ],int n)     //reading function
+int read(struct book b[ ],int n)     //reading function
 {
 	printf("\n------Reading books details------\n");
 	int i;
@@ -103,7 +106,7 @@ read(struct book b[ ],int n)     //reading function
 	
 }
 
-print(struct book b[ ],int n)          //printing function
+int print(struct book b[ ],int n)          //printing function
 {
 	int i;
 	printf("\n------Books Details------\n");
@@ -121,9 +124,10 @@ print(struct book b[ ],int n)          //printing function
 			
 	}
 	
+	
 }
 
-available(struct book b[ ],int n)          //available books
+int available(struct book b[ ],int n)          //available books
 {
 	int i,j,count=0,size;
 	printf("\nEnter no.of available books:");
@@ -157,7 +161,7 @@ available(struct book b[ ],int n)          //available books
 	printf("\nNo.of available books :%d\n ",count);
 }
 
-based_on_title(struct book b[ ],int n)          //searching a book based on title
+int based_on_title(struct book b[ ],int n)          //searching a book based on title
 {
 	char title[20];
 	int i,j;
@@ -178,7 +182,7 @@ based_on_title(struct book b[ ],int n)          //searching a book based on titl
     }
 }
 
-update_book(struct book b[ ],int n)          //update a book
+int update_book(struct book b[ ],int n)          //update a book
 {
 	int i,u; 
 	printf("\n------Book updation------\n");
@@ -200,7 +204,7 @@ update_book(struct book b[ ],int n)          //update a book
 	print(b,n);
 }
 
-copies(struct book b[ ],int n)          //available no.of copies for a book
+int copies(struct book b[ ],int n)          //available no.of copies for a book
 {
 	int i,j,c[20],size;
 	
@@ -218,7 +222,7 @@ copies(struct book b[ ],int n)          //available no.of copies for a book
     }
 }
 
-delete_book(struct book b[ ],int n)          //deleting a book
+int delete_book(struct book b[ ],int n)          //deleting a book
 {
 	int i,j,pos;
 	printf("\n------Deleting a book------\n");
@@ -250,11 +254,12 @@ delete_book(struct book b[ ],int n)          //deleting a book
 	    printf("\nAuthor  :%s",b[i].author);
         printf("\nPrice   :%f\n",b[i].price);
 	}
+	return n-1;
 }
 
 
 
-insert_by_pos(struct book b[ ],int n)          //inserting at specified position
+int insert_by_pos(struct book b[ ],int n)          //inserting at specified position
 {
 	int i,j,pos;
 	printf("\nEnter position to insert a book details:");
@@ -288,9 +293,10 @@ insert_by_pos(struct book b[ ],int n)          //inserting at specified position
 	    printf("\nAuthor  :%s",b[i].author);
         printf("\nPrice   :%f\n",b[i].price);
 	}
+	return n+1;
 }
 
-numberwise(struct book b[ ],int n)  //books details-book numberwise
+int numberwise(struct book b[ ],int n)  //books details-book numberwise
 {
 	int i,j,temp;
 	char tem[20];
@@ -330,6 +336,7 @@ numberwise(struct book b[ ],int n)  //books details-book numberwise
 	}
 	
 }
+
 
 
 
